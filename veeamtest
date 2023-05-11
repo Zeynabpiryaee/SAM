@@ -1,0 +1,26 @@
+import os
+import shutil
+import time
+
+main_folder_path = 'c:/users/main/folder'
+mirror_folder_path = 'c:/users/mirror/folder'
+
+
+def syn_folders():
+    shutil.rmtree(mirror_folder_path)
+    shutil.copytree(main_folder_path, mirror_folder_path)
+
+
+if not os.path.exists(main_folder_path):
+    os.makedirs(main_folder_path)
+    os.chmod(main_folder_path,0 )  
+
+
+if not os.path.exists(mirror_folder_path):
+    os.makedirs(mirror_folder_path)
+    os.chmod(mirror_folder_path,0 )
+
+
+while True:
+    syn_folders()
+    time.sleep(28800)  # 8 hours in seconds
